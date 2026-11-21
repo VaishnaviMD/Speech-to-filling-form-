@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #fbf7ef;
+  --card: #ffffff;
+  --ink: #1f1b16;
+  --muted: #6b6257;
+  --line: #e7dfd1;
+  --accent: #c2410c;
+  --accent-ink: #ffffff;
+  --accent-soft: #fde7d6;
+  --ok: #15803d;
+  --ok-soft: #dcfce7;
+  --warn: #b45309;
+  --warn-soft: #fef3c7;
+  --danger: #b91c1c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17140f;
+    --card: #221e18;
+    --ink: #f4eee4;
+    --muted: #b3a896;
+    --line: #3a3329;
+    --accent: #f97316;
+    --accent-ink: #1a1009;
+    --accent-soft: #3d2414;
+    --ok: #4ade80;
+    --ok-soft: #12301d;
+    --warn: #fbbf24;
+    --warn-soft: #382a0d;
+    --danger: #f87171;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-hind);
+  --font-display: var(--font-fraunces);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Accessibility: WCAG AAA High-Contrast Mode for Low-Vision & Elderly Users */
+html.high-contrast,
+body.high-contrast {
+  --paper: #000000 !important;
+  --card: #0d0d0d !important;
+  --ink: #ffff00 !important;
+  --muted: #ffffaa !important;
+  --line: #ffff00 !important;
+  --accent: #ffff00 !important;
+  --accent-ink: #000000 !important;
+  --accent-soft: #2a2a00 !important;
+  --ok: #00ff66 !important;
+  --ok-soft: #003311 !important;
+  --warn: #ffcc00 !important;
+  --warn-soft: #332800 !important;
+  --danger: #ff4444 !important;
+}
+
+html.high-contrast button,
+html.high-contrast input,
+html.high-contrast textarea {
+  border-color: #ffff00 !important;
+}
+
+/* Accessibility: Font Scaling */
+html.font-large {
+  font-size: 115% !important;
+}
+
+html.font-xlarge {
+  font-size: 130% !important;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); }
+  100% { box-shadow: 0 0 0 28px transparent; }
+}
+.listening { animation: pulse-ring 1.2s ease-out infinite; }
+
+@keyframes fill-flash {
+  0% { background: var(--ok-soft); }
+  100% { background: transparent; }
+}
+.just-filled { animation: fill-flash 1.4s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .listening, .just-filled { animation: none; }
+}
